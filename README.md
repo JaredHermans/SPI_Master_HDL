@@ -1,7 +1,7 @@
 # SPI_Master_HDL
 
 Project creates a SPI master on the GO Board FPGA. The interface sends out a byte one bit at a time on MOSI (Master out Slave in)
-and recieves byte data one bit at a time on MISO (Master in Slave out).
+and receives byte data one bit at a time on MISO (Master in Slave out).
 
 **SPI_Master.v** module creates a SPI master that works with all 4 modes of SPI. The module does not contain a chip select
 which will get instantiated in a higher level module.
