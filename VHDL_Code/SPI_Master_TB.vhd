@@ -25,7 +25,7 @@ architecture Behave of SPI_Master_TB is
     signal r_Master_TX_DV           : std_logic := '0';
     signal r_Master_CS_n            : std_logic := '1';
     signal w_Master_TX_Ready        : std_logic;
-    signal r_Master_TX_DV           : std_logic := '0';
+    signal r_Master_RX_DV           : std_logic := '0';
     signal r_Master_RX_Byte         : std_logic_vector(7 downto 0) := X"00";
 
     -- Sends a single byte from master
@@ -46,7 +46,7 @@ architecture Behave of SPI_Master_TB is
 begin   -- architecture Behave
 
     -- Clock Generators:
-    r_Clk   <= nor r_Clk after 2 ns;
+    r_Clk   <= not r_Clk after 2 ns;
 
     -- Instantiate Master
     SPI_Master_Inst : entity work.SPI_Master
@@ -79,7 +79,7 @@ begin   -- architecture Behave
         wait for 100 ns;
         r_Rst_L <= '0';
         wait for 100 ns;
-        r_RS_L <= '1';
+        r_Rst_L <= '1';
 
         -- Test singlw byte
         SendSingleByte(X"C1", r_Master_TX_Byte, r_Master_TX_DV);
